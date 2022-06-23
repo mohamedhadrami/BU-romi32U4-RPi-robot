@@ -59,4 +59,9 @@ html {
     margin-left: auto;
     margin-right: auto;
   }
+
+  #servo {
+    border: 1px solid black;
+    background-color: gray;
+  }
   

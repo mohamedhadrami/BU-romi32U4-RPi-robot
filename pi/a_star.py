@@ -35,6 +35,9 @@ class AStar:
 
   def motors(self, left, right):
     self.write_pack(6, 'hh', left, right)
+  
+  def servo(self, setServo):
+    self.write_pack(5, 'hh', setServo)
 
   def read_buttons(self):
     return self.read_unpack(3, 3, "???")

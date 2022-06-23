@@ -40,6 +40,11 @@ def motors(left, right):
     a_star.motors(int(left), int(right))
     return ""
 
+@app.route("/servo/<setServo>")
+def servo(setServo):
+    a_star.servo(int(setServo))
+    return ""
+
 @app.route("/leds/<int:led0>,<int:led1>,<int:led2>")
 def leds(led0, led1, led2):
     a_star.leds(led0, led1, led2)

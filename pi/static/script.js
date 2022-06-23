@@ -129,6 +129,11 @@ function playNotes() {
   $.ajax({url: "play_notes/"+notes})
 }
 
+function setServo(){
+  setServo = $('#Servo').val()
+  $.ajax({url: "servo/"+setServo})
+}
+
 function shutdown() {
   if (confirm("Really shut down the Raspberry Pi?"))
     return true
