@@ -29,6 +29,9 @@ class AStar:
 
   def leds(self, red, yellow, green):
     self.write_pack(0, 'BBB', red, yellow, green)
+  
+  def buzz(self, beep):
+    self.write_pack(0, 'B', beep)
 
   def play_notes(self, notes):
     self.write_pack(24, 'B14s', 1, notes.encode("ascii"))

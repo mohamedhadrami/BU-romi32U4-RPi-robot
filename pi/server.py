@@ -56,6 +56,11 @@ def leds(led0, led1, led2):
     led2_state = led2
     return ""
 
+@app.route("/beep/<int:beep>")
+def buzz(beep):
+    a_star.buzz(beep)
+    return ""
+
 @app.route("/heartbeat/<int:state>")
 def hearbeat(state):
     if state == 0:

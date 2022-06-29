@@ -124,6 +124,11 @@ function setLeds() {
   $.ajax({url: "leds/"+led0+","+led1+","+led2})
 }
 
+function setBuzz(){
+  beep = $('#beep')[0].checked ? 1 : 0
+  $.ajax({url: "beep/"+beep})
+}
+
 function playNotes() {
   notes = $('#notes').val()
   $.ajax({url: "play_notes/"+notes})
@@ -132,8 +137,7 @@ function playNotes() {
 function setServo(){
   setting = $('#servoControl').val()
   $.ajax({url: "servo/"+setting})
-  document.getElementById("demo").innerHTML = setting
-  // eat me
+  confirm(setting)
 }
 
 function shutdown() {
