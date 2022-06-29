@@ -130,8 +130,9 @@ function playNotes() {
 }
 
 function setServo(){
-  setServo = $('#Servo').val()
-  $.ajax({url: "servo/"+setServo})
+  var setting = document.getElementById("servoControl")
+  $.ajax({url: "servo/"+setting})
+  document.getElementById("demo").innerHTML = setting
 }
 
 function shutdown() {
