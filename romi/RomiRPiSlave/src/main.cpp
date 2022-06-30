@@ -24,20 +24,20 @@
 // data format, make sure to update the corresponding code in
 // a_star.py on the Raspberry Pi.
 
-struct Data
+struct Data // Comments signify the address of each variable when unpacked by the Pi
 {
-  bool yellow, green, red;
-  bool buttonA, buttonB, buttonC;
+  bool yellow, green, red;              // 0, 1, 2
+  bool buttonA, buttonB, buttonC;       // 3, 4, 5
 
-  int16_t leftMotor, rightMotor;
-  uint16_t batteryMillivolts;
-  uint16_t analog[6];
-  uint16_t setServo;
+  int16_t leftMotor, rightMotor;        // 6-7, 8-9
+  uint16_t batteryMillivolts;           // 10-11
+  uint16_t analog[6];                   // 12-23
+  uint16_t setServo;                    // 24-25
 
-  bool playNotes;
-  char notes[14];
+  bool playNotes;                       // 26
+  char notes[14];                       // 27-40
 
-  int16_t leftEncoder, rightEncoder;
+  int16_t leftEncoder, rightEncoder;    // 41-42, 43-44
 };
 
 PololuRPiSlave<struct Data,5> slave;
@@ -53,13 +53,14 @@ void setup()
 {
   // Set up the slave at I2C address 20.
   slave.init(20);
+  digitalWrite(4,HIGH);
 
   // Play startup sound.
   buzzer.play("v10>>g16>>>c16");
 
   servo.attach();
   servo.setMinMaxMicroseconds(700, 2600);
-  servo.writeMicroseconds(1800); 
+  servo.writeMicroseconds(700); 
 }
 
 void loop()
