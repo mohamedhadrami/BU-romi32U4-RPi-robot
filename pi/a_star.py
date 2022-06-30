@@ -29,18 +29,15 @@ class AStar:
 
   def leds(self, red, yellow, green):
     self.write_pack(0, 'BBB', red, yellow, green)
-  
-  def buzz(self, beep):
-    self.write_pack(0, 'B', beep)
 
   def play_notes(self, notes):
-    self.write_pack(24, 'B14s', 1, notes.encode("ascii"))
+    self.write_pack(26, 'B14s', 1, notes.encode("ascii"))
 
   def motors(self, left, right):
     self.write_pack(6, 'hh', left, right)
   
   def servo(self, setServo):
-    self.write_pack(5, 'hh', setServo)
+    self.write_pack(24, 'H', setServo)
 
   def read_buttons(self):
     return self.read_unpack(3, 3, "???")
@@ -52,7 +49,7 @@ class AStar:
     return self.read_unpack(12, 12, "HHHHHH")
 
   def read_encoders(self):
-    return self.read_unpack(39, 4, 'hh')
+    return self.read_unpack(41, 4, 'hh')
 
   def test_read8(self):
     self.read_unpack(0, 8, 'cccccccc')
