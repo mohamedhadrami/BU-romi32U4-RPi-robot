@@ -1,3 +1,4 @@
+# Copyright Pololu Corporation.  For more information, see https://www.pololu.com/
 import smbus
 import struct
 import time
@@ -35,7 +36,7 @@ class AStar:
 
   def motors(self, left, right):
     self.write_pack(6, 'hh', left, right)
-  
+
   def servo(self, setServo):
     self.write_pack(24, 'H', setServo)
 
@@ -57,4 +58,3 @@ class AStar:
   def test_write8(self):
     self.bus.write_i2c_block_data(20, 0, [0,0,0,0,0,0,0,0])
     time.sleep(0.0001)
-

@@ -42,7 +42,6 @@ def motors(left, right):
 
 @app.route("/servo/<setServo>")
 def servo(setServo):
-    setServo=setServo
     a_star.servo(int(setServo))
     return ""
 
@@ -80,4 +79,4 @@ def shutting_down():
     return "Shutting down in 2 seconds! You can remove power when the green LED stops flashing."
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0")
+    app.run(host = "0.0.0.0", port="8000")

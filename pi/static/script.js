@@ -117,6 +117,10 @@ function setMotorsDone() {
   block_set_motors = false
 }
 
+function servo(setting) {
+  $.ajax({url: "servo/"+setting})
+}
+
 function setLeds() {
   led0 = $('#led0')[0].checked ? 1 : 0
   led1 = $('#led1')[0].checked ? 1 : 0
@@ -127,11 +131,6 @@ function setLeds() {
 function playNotes() {
   notes = $('#notes').val()
   $.ajax({url: "play_notes/"+notes})
-}
-
-function setServo(){
-  setting = $('#servoControl').val()
-  $.ajax({url: "servo/"+setting})
 }
 
 function shutdown() {
