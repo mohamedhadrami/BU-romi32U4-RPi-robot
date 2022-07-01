@@ -1,5 +1,4 @@
 // Copyright Pololu Corporation.  For more information, see https://www.pololu.com/
-// hey
 stop_motors = true
 block_set_motors = false
 mouse_dragging = false
