@@ -37,7 +37,7 @@
 
         <p>
             <th>Buzzer</th><br>
-            <input type="text" id="notes" maxlength="14" value="V8 L16 ceg>c">
+            <input type="text" id="notes" maxlength="14" value="V10 L16 ceg>c">
             <button onclick="playNotes()">Play</button>
         </p>
         
@@ -45,6 +45,10 @@
             <th>Servo</th><br>
             <input type="text" id="servoControl" maxlength="4" value="1500">
             <button onclick="setServo()">Go!</button>
+            <!--div class="slidecontainer">
+                <input type="range" min="700" max="2500" value="1500" class="slider" id="servoControl"  oninput="setServo()">
+                <output>1500</output>
+            </div>!-->
         </p>
 
         <table>

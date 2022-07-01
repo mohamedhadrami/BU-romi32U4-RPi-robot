@@ -42,6 +42,7 @@ def motors(left, right):
 
 @app.route("/servo/<setServo>")
 def servo(setServo):
+    setServo=setServo
     a_star.servo(int(setServo))
     return ""
 
