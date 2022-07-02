@@ -11,6 +11,9 @@ app.debug = True
 from a_star import AStar
 a_star = AStar()
 
+#import camera
+from PIL import Image
+import os
 import json
 
 led0_state = False
@@ -31,7 +34,7 @@ def status():
         "buttons": buttons,
         "battery_millivolts": battery_millivolts,
         "analog": analog,
-        "encoders": encoders
+        "encoders": encoders,
     }
     return json.dumps(data)
 
@@ -44,6 +47,13 @@ def motors(left, right):
 def servo(setServo):
     a_star.servo(int(setServo))
     return ""
+
+@app.route("/pic")
+def pic():
+    #img = Image.open("/home/pi/pololu-rpi-slave-arduino-library/pi/images/image.jpg")
+    #return img.show()
+    path = os.path.abspath("templates/images/image.jpg")
+    return path
 
 @app.route("/leds/<int:led0>,<int:led1>,<int:led2>")
 def leds(led0, led1, led2):
@@ -79,4 +89,4 @@ def shutting_down():
     return "Shutting down in 2 seconds! You can remove power when the green LED stops flashing."
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port="8000")
+    app.run(host = "0.0.0.0")

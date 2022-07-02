@@ -60,7 +60,6 @@ void setup()
 
   servo.attach();
   servo.setMinMaxMicroseconds(700, 2600);
-  servo.writeMicroseconds(700); 
 }
 
 void loop()
@@ -88,7 +87,6 @@ void loop()
   ledRed(slave.buffer.red);
   motors.setSpeeds(slave.buffer.leftMotor, slave.buffer.rightMotor);
   servo.writeMicroseconds(slave.buffer.setServo);
-
   
   // Playing music involves both reading and writing, since we only
   // want to do it once.

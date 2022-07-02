@@ -2,6 +2,7 @@
 stop_motors = true
 block_set_motors = false
 mouse_dragging = false
+block_servo = false
 
 function init() {
   poll()
@@ -117,9 +118,20 @@ function setMotorsDone() {
   block_set_motors = false
 }
 
-function servo(setting) {
+function servo() {
+  setting = $('#servoControl').val()
+  document.getElementById("demo").innerHTML = "Servo = "+setting;
+  setServo(setting)
+}
+
+function setServo(setting){
   $.ajax({url: "servo/"+setting})
 }
+/*
+function picture(){
+  img = $.ajax({url: "pic/"})
+  document.getElementById("piImg").src = img
+}*/
 
 function setLeds() {
   led0 = $('#led0')[0].checked ? 1 : 0

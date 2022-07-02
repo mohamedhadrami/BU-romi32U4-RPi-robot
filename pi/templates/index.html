@@ -42,11 +42,11 @@
         </p>
 
         <p>
-            <th>Servo</th><br>
+            <p id="demo">Servo = 0</p>
             <input type="number" id="servoControl" min="700" max="2500" value="1500">
             <button onclick="servo()">Go!</button>
             <!--<div class="slidecontainer">
-                <input type="range" min="700" max="2500" value="1500" class="slider" id="setServo"  oninput="servo()">
+                <input type="range" min="700" max="2500" value="1500" class="slider" id="servoControl"  oninput="servo()">
             </div>-->
         </p>
 
@@ -81,6 +81,9 @@
 
         <div id="joystick">
         </div>
+
+        <button onclick="picture()">Take Picture</button><br>
+        <p><img id="piImg"></p>
 
     </div>
 
