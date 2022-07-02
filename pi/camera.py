@@ -6,5 +6,5 @@ from time import sleep
 camera = PiCamera()
 camera.start_preview()
 sleep(5)
-camera.capture('/home/pi/pololu-rpi-slave-arduino-library/pi/templates/images/image.jpg')
+camera.capture('/home/pi/pololu-rpi-slave-arduino-library/pi/images/image.jpg')
 camera.stop_preview()

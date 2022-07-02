@@ -34,7 +34,7 @@ def status():
         "buttons": buttons,
         "battery_millivolts": battery_millivolts,
         "analog": analog,
-        "encoders": encoders,
+        "encoders": encoders
     }
     return json.dumps(data)
 
@@ -52,7 +52,7 @@ def servo(setServo):
 def pic():
     #img = Image.open("/home/pi/pololu-rpi-slave-arduino-library/pi/images/image.jpg")
     #return img.show()
-    path = os.path.abspath("templates/images/image.jpg")
+    path = os.path.abspath("images/image.jpg")
     return path
 
 @app.route("/leds/<int:led0>,<int:led1>,<int:led2>")

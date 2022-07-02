@@ -127,11 +127,11 @@ function servo() {
 function setServo(setting){
   $.ajax({url: "servo/"+setting})
 }
-/*
+
 function picture(){
   img = $.ajax({url: "pic/"})
   document.getElementById("piImg").src = img
-}*/
+}
 
 function setLeds() {
   led0 = $('#led0')[0].checked ? 1 : 0
