@@ -1,0 +1,26 @@
+<annotation verified="yes">
+	<folder>Dataset</folder>
+	<filename>IMG_0072.HEIC</filename>
+	<path>/Users/mohamedhadrami/Desktop/Dataset/IMG_0072.HEIC</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3024</width>
+		<height>4032</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>bag</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1074</xmin>
+			<ymin>811</ymin>
+			<xmax>1939</xmax>
+			<ymax>2081</ymax>
+		</bndbox>
+	</object>
+</annotation>

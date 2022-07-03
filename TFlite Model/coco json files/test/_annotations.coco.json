@@ -1,0 +1,99 @@
+{
+    "info": {
+        "year": "2022",
+        "version": "1",
+        "description": "Exported from roboflow.ai",
+        "contributor": "",
+        "url": "https://public.roboflow.ai/object-detection/undefined",
+        "date_created": "2022-06-29T00:00:40+00:00"
+    },
+    "licenses": [
+        {
+            "id": 1,
+            "url": "https://choosealicense.com/licenses/mit/",
+            "name": "MIT"
+        }
+    ],
+    "categories": [
+        {
+            "id": 0,
+            "name": "Objects",
+            "supercategory": "none"
+        },
+        {
+            "id": 1,
+            "name": "bag",
+            "supercategory": "Objects"
+        }
+    ],
+    "images": [
+        {
+            "id": 0,
+            "license": 1,
+            "file_name": "IMG_0068_jpeg.rf.2639be66fcf68b22307a8b4f27dc8be1.jpg",
+            "height": 416,
+            "width": 416,
+            "date_captured": "2022-06-29T00:00:40+00:00"
+        },
+        {
+            "id": 1,
+            "license": 1,
+            "file_name": "ezgif-frame-092_jpeg.rf.79f1011704d32878dc5f08ca3558b444.jpg",
+            "height": 416,
+            "width": 416,
+            "date_captured": "2022-06-29T00:00:40+00:00"
+        },
+        {
+            "id": 2,
+            "license": 1,
+            "file_name": "ezgif-frame-120_jpeg.rf.9c19f9cf8fad8c797ee1a798170bcbea.jpg",
+            "height": 416,
+            "width": 416,
+            "date_captured": "2022-06-29T00:00:40+00:00"
+        }
+    ],
+    "annotations": [
+        {
+            "id": 0,
+            "image_id": 0,
+            "category_id": 1,
+            "bbox": [
+                71,
+                106,
+                189.5,
+                222.5
+            ],
+            "area": 42163.75,
+            "segmentation": [],
+            "iscrowd": 0
+        },
+        {
+            "id": 1,
+            "image_id": 1,
+            "category_id": 1,
+            "bbox": [
+                138,
+                19,
+                81.5,
+                218.5
+            ],
+            "area": 17807.75,
+            "segmentation": [],
+            "iscrowd": 0
+        },
+        {
+            "id": 2,
+            "image_id": 2,
+            "category_id": 1,
+            "bbox": [
+                167,
+                53,
+                92.5,
+                260.5
+            ],
+            "area": 24096.25,
+            "segmentation": [],
+            "iscrowd": 0
+        }
+    ]
+}
