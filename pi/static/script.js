@@ -129,8 +129,7 @@ function setServo(setting){
 }
 
 function picture(){
-  img = $.ajax({url: "pic/"})
-  document.getElementById("piImg").src = img
+  $.ajax({url: "/cam"})
 }
 
 function setLeds() {

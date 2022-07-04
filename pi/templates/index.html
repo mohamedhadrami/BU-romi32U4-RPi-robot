@@ -14,11 +14,13 @@
 <body onload="init();">
 
     <div id="container">
-
+        <img src="/logo" width="54" height="64"/>
         <h1>Raspberry Pi Robot Control Panel</h1>
 
         <p><a href="/halt" onClick="return shutdown()">Shutdown...</a></p>
 
+        <p><button onclick="picture()"><img src="/pic" width="480" height="270"></button><br></p>
+        
         <table>
             <tr>
                 <th>Buttons</th>
@@ -45,9 +47,6 @@
             <p id="demo">Servo = 0</p>
             <input type="number" id="servoControl" min="700" max="2500" value="1500">
             <button onclick="servo()">Go!</button>
-            <!--<div class="slidecontainer">
-                <input type="range" min="700" max="2500" value="1500" class="slider" id="servoControl"  oninput="servo()">
-            </div>-->
         </p>
 
         <table>
@@ -80,10 +79,7 @@
         </table>
 
         <div id="joystick">
-        </div>
-
-        <!--<button onclick="picture()">Take Picture</button><br>-->
-        <p><img src="/pic"></p>
+        </div><br>
 
     </div>
 

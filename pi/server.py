@@ -4,6 +4,7 @@
 from flask import Flask
 from flask import render_template
 from flask import redirect
+from flask import send_file
 from subprocess import call
 app = Flask(__name__)
 app.debug = True
@@ -11,8 +12,6 @@ app.debug = True
 from a_star import AStar
 a_star = AStar()
 
-#import camera
-from PIL import Image
 import os
 import json
 
@@ -48,12 +47,24 @@ def servo(setServo):
     a_star.servo(int(setServo))
     return ""
 
+@app.route("/cam")
+def cam():
+    #cmd = "python3 /home/pi/pololu-rpi-slave-arduino-library/pi/camera.py"
+    #call(cmd, shell=True)
+    call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py']) #use chmod 755 <path> in terminal to allow this script to be executed or else permission denied
+    return ""
+
 @app.route("/pic")
 def pic():
-    #img = Image.open("/home/pi/pololu-rpi-slave-arduino-library/pi/images/image.jpg")
-    #return img.show()
-    path = os.path.abspath("images/image.jpg")
-    return path
+    call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
+    picture = "images/image.jpg"
+    hello()
+    return send_file(picture)
+
+@app.route("/logo")
+def logo():
+    logo = "images/Bshield_rgb.jpg"
+    return send_file(logo)
 
 @app.route("/leds/<int:led0>,<int:led1>,<int:led2>")
 def leds(led0, led1, led2):
@@ -89,4 +100,4 @@ def shutting_down():
     return "Shutting down in 2 seconds! You can remove power when the green LED stops flashing."
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0")
+    app.run(host = "0.0.0.0", port="7000")
