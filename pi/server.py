@@ -12,6 +12,7 @@ app.debug = True
 from a_star import AStar
 a_star = AStar()
 
+import hardwareside
 import os
 import json
 
@@ -42,22 +43,39 @@ def motors(left, right):
     a_star.motors(int(left), int(right))
     return ""
 
+@app.route("/classify/<classnote>")
+def classify(classnote):
+    call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
+    #call(['/home/pi/pololu-rpi-slave-arduino-library/pi/hardwareside.py']) #use chmod 755 <path> for permission to file
+    if hardwareside.classification_label == 'left':
+        a_star.motors(-100,100)
+        #sleep(1000)
+        a_star.motors(0,0)
+    elif hardwareside.classification_label =='right':
+        a_star.motors(100,-100)
+        #sleep(1000)
+        a_star.motors(0,0)
+    elif hardwareside.classification_label =='straight':
+        a_star.motors(100,100)
+        #sleep(1000)
+        a_star.motors(0,0)
+    elif hardwareside.classification_label =='bag':
+        a_star.servo(1500)
+        #sleep(1000)
+        a_star.servo(2000)
+    else:
+        a_star.play_notes(classnote)
+    return ""
+
 @app.route("/servo/<setServo>")
 def servo(setServo):
     a_star.servo(int(setServo))
     return ""
 
-@app.route("/cam")
-def cam():
-    #cmd = "python3 /home/pi/pololu-rpi-slave-arduino-library/pi/camera.py"
-    #call(cmd, shell=True)
-    call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py']) #use chmod 755 <path> in terminal to allow this script to be executed or else permission denied
-    return ""
-
 @app.route("/pic")
 def pic():
-    call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
-    picture = "images/image.jpg"
+    #call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
+    picture = "/home/pi/Desktop/data/image.jpeg"
     hello()
     return send_file(picture)
 

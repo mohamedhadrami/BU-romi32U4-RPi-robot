@@ -13,50 +13,45 @@
 
 <body onload="init();">
 
-    <div id="container">
-        <img src="/logo" width="54" height="64"/>
+    <div>
+        <img src="/logo" width="108" height="128"/>
         <h1>Raspberry Pi Robot Control Panel</h1>
 
         <p><a href="/halt" onClick="return shutdown()">Shutdown...</a></p>
+    </div>
 
-        <p><button onclick="picture()"><img src="/pic" width="480" height="270"></button><br></p>
-        
-        <table>
+    <div id="container">
+        <p><button onclick="picture()" class="button"><img src="/pic" width="480" height="270"></button><br></p>
+
+        <p>
+            <th>Buzzer</th><br>
+            <input type="text" id="notes" maxlength="14" value="V10 L16 ceg>c">
+            <button onclick="playNotes()" class="button">Play</button>
+        </p>
+
+        <p>
+            <p id="demo">Servo = 0</p>
+            <input type="number" id="servoControl" min="700" max="2500" value="1500">
+            <button onclick="servo()" class="button">Go!</button>
+        </p>
+
+        <table class="middle vspace">
             <tr>
                 <th>Buttons</th>
                 <td class="center" id="button0"></td>
                 <td class="center" id="button1"></td>
                 <td class="center" id="button2"></td>
             </tr>
-
             <tr>
                 <th>LEDs</th>
                 <td class="center"><input type="checkbox" id="led0" onchange="setLeds()"></td>
                 <td class="center"><input type="checkbox" id="led1" onchange="setLeds()"></td>
                 <td class="center"><input type="checkbox" id="led2" onchange="setLeds()"></td>
             </tr>
-        </table>
-
-        <p>
-            <th>Buzzer</th><br>
-            <input type="text" id="notes" maxlength="14" value="V10 L16 ceg>c">
-            <button onclick="playNotes()">Play</button>
-        </p>
-
-        <p>
-            <p id="demo">Servo = 0</p>
-            <input type="number" id="servoControl" min="700" max="2500" value="1500">
-            <button onclick="servo()">Go!</button>
-        </p>
-
-        <table>
             <tr>
                 <th>Battery</th>
-                <td class="wide"><span id="battery_millivolts"></span> mV</td>
+                <td colspan="3"><span id="battery_millivolts"></span> mV</td>
             </tr>
-        </table>
-
-        <table>
             <tr>
                 <th rowspan=2>Analog</th>
                 <td id="analog0"></td>
@@ -68,9 +63,6 @@
                 <td id="analog4"></td>
                 <td id="analog5"></td>
             </tr>
-        </table>
-
-        <table>
             <tr>
                 <th rowspan=2>Encoders (Romi&nbsp;only)</th>
                 <td id="encoders0"></td>
@@ -78,9 +70,14 @@
             </tr>
         </table>
 
-        <div id="joystick">
+        <button onclick="classify()" class="button vspace">Classify</button><br>
+
+        <div id="joystick" class="vspace">
         </div><br>
 
     </div>
 
+    <div class="footer">
+        <p>Bradley University Romi 32U4 Robot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </div>
 </html>

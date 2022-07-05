@@ -129,7 +129,12 @@ function setServo(setting){
 }
 
 function picture(){
-  $.ajax({url: "/cam"})
+  $.ajax({url: "/pic"})
+}
+
+function classify(){
+  classnote = $('#notes').val()
+  $.ajax({url: "classify/"+classnote})
 }
 
 function setLeds() {
