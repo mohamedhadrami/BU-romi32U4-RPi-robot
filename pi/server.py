@@ -13,7 +13,8 @@ app.debug = True
 from a_star import AStar
 a_star = AStar()
 
-import hardwareside
+#import hardwareside
+import image_recog
 import os
 import json
 
@@ -46,21 +47,22 @@ def motors(left, right):
 
 @app.route("/classify/<classnote>")
 def classify(classnote):
-    #call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
-    #call(['/home/pi/pololu-rpi-slave-arduino-library/pi/hardwareside.py']) #use chmod 755 <path> for permission to file
-    if hardwareside.classification_label == 'left':
+    #call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
+    #call(['/home/pi/RPi-Romi-Robot/pi/hardwareside.py']) #use chmod 755 <path> for permission to file
+    #call(['/home/pi/RPi-Romi-Robot/pi/image_recog.py'])
+    if image_recog.lbl_max == 'left':
         a_star.motors(-100,100)
         sleep(1000)
         a_star.motors(0,0)
-    elif hardwareside.classification_label =='right':
+    elif image_recog.lbl_max =='right':
         a_star.motors(100,-100)
         sleep(1000)
         a_star.motors(0,0)
-    elif hardwareside.classification_label =='straight':
+    elif image_recog.lbl_max =='straight':
         a_star.motors(100,100)
         sleep(1000)
         a_star.motors(0,0)
-    elif hardwareside.classification_label =='bag':
+    elif image_recog.lbl_max =='bag':
         a_star.servo(1500)
         sleep(1000)
         a_star.servo(2000)
@@ -75,7 +77,7 @@ def servo(setServo):
 
 @app.route("/pic")
 def pic():
-    call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
+    #call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
     picture = "/home/pi/RPi-Romi-Robot/pi/data/image.jpeg"
     hello()
     return send_file(picture)

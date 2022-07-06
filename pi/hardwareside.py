@@ -38,8 +38,8 @@ _, height, width, _ = interpreter.get_input_details()[0]['shape']
 print("Image Shape (", width, ",", height, ")")
 
 # Load an image to be classified.
-image = Image.open(data_folder + "out162.jpg").convert('RGB').resize((width, height))
-
+img = Image.open(data_folder + "left.jpg").convert('RGB').resize((width, height))
+"""
 # Classify the image.
 time1 = time.time()
 label_id, prob = classify_image(interpreter, image)
@@ -53,3 +53,35 @@ labels = load_labels(label_path)
 # Return the classification label of the image.
 classification_label = labels[label_id]
 print("Image Label is :", classification_label)
+"""
+output_details = interpreter.get_output_details()
+input_data = np.expand_dims(img, axis=0)
+#print(input_data)
+
+# feed data to input tensor and run the interpreter
+#interpreter.set_tensor(input_details[0]['index'], input_data)
+set_input_tensor(interpreter, img)
+interpreter.invoke()
+
+# Obtain results and map them to the classes
+predictions = interpreter.get_tensor(output_details[0]['index'])[0]
+
+top_k_results = 3
+# Get indices of the top k results
+top_k_indices = np.argsort(predictions)[::-1][:top_k_results]
+
+with open(label_path, 'r') as f:
+    labels = list(map(str.strip, f.readlines()))
+
+for i in range(top_k_results):
+    pred=predictions[top_k_indices[i]]/255.0
+    pred=round(pred,2)
+    lbl=labels[top_k_indices[i]]
+    print(lbl, "=", pred)
+
+print("-----------------------------------")
+
+pred_max=predictions[top_k_indices[0]]/255.0
+lbl_max=labels[top_k_indices[0]]
+
+print(lbl_max)
