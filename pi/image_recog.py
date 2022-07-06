@@ -129,7 +129,7 @@ with picamera.PiCamera() as camera:
         #camera.capture(stream, 'rgb')
         #camera.capture("/home/pi/Desktop/image.jpeg")
 
-        img = Image.open("/home/pi/RPi-Romi-Robot/pi/data/straight.jpg").convert('RGB').resize((180, 180))
+        img = Image.open("/home/pi/RPi-Romi-Robot/pi/data/left.jpg").convert('RGB').resize((180, 180))
         
 
         # Add a batch dimension
@@ -170,7 +170,7 @@ with picamera.PiCamera() as camera:
         #preview.set_data(stream)
         #fig.canvas.get_tk_widget().update()
         j+=1
-        print(lbl_max)
+        print("imaged_recog: "+lbl_max)
         
 camera.close()
 

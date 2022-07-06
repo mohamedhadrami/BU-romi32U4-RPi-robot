@@ -13,7 +13,7 @@ app.debug = True
 from a_star import AStar
 a_star = AStar()
 
-#import hardwareside
+import hardwareside
 import image_recog
 import os
 import json

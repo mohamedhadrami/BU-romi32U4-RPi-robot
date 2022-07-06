@@ -84,4 +84,4 @@ print("-----------------------------------")
 pred_max=predictions[top_k_indices[0]]/255.0
 lbl_max=labels[top_k_indices[0]]
 
-print(lbl_max)
+print("hardware side: "+lbl_max)
