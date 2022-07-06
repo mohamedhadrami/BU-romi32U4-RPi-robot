@@ -6,6 +6,7 @@ from flask import render_template
 from flask import redirect
 from flask import send_file
 from subprocess import call
+from time import sleep
 app = Flask(__name__)
 app.debug = True
 
@@ -45,23 +46,23 @@ def motors(left, right):
 
 @app.route("/classify/<classnote>")
 def classify(classnote):
-    call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
+    #call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
     #call(['/home/pi/pololu-rpi-slave-arduino-library/pi/hardwareside.py']) #use chmod 755 <path> for permission to file
     if hardwareside.classification_label == 'left':
         a_star.motors(-100,100)
-        #sleep(1000)
+        sleep(1000)
         a_star.motors(0,0)
     elif hardwareside.classification_label =='right':
         a_star.motors(100,-100)
-        #sleep(1000)
+        sleep(1000)
         a_star.motors(0,0)
     elif hardwareside.classification_label =='straight':
         a_star.motors(100,100)
-        #sleep(1000)
+        sleep(1000)
         a_star.motors(0,0)
     elif hardwareside.classification_label =='bag':
         a_star.servo(1500)
-        #sleep(1000)
+        sleep(1000)
         a_star.servo(2000)
     else:
         a_star.play_notes(classnote)
@@ -74,8 +75,8 @@ def servo(setServo):
 
 @app.route("/pic")
 def pic():
-    #call(['/home/pi/pololu-rpi-slave-arduino-library/pi/camera.py'])
-    picture = "/home/pi/Desktop/data/image.jpeg"
+    call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
+    picture = "/home/pi/RPi-Romi-Robot/pi/data/image.jpeg"
     hello()
     return send_file(picture)
 
@@ -118,4 +119,4 @@ def shutting_down():
     return "Shutting down in 2 seconds! You can remove power when the green LED stops flashing."
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port="7000")
+    app.run(host = "0.0.0.0", port="5000")

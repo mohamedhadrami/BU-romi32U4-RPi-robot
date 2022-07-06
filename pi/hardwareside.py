@@ -25,9 +25,9 @@ def classify_image(interpreter, image, top_k=1):
   ordered = np.argpartition(-output, 1)
   return [(i, output[i]) for i in ordered[:top_k]][0]
 
-data_folder = "/home/pi/Desktop/data/"
+data_folder = "/home/pi/RPi-Romi-Robot/pi/data/"
 
-model_path = data_folder + "latestmodel.tflite"
+model_path = data_folder + "new.tflite"
 label_path = data_folder + "labels.txt"
 
 interpreter = Interpreter(model_path)
@@ -38,7 +38,7 @@ _, height, width, _ = interpreter.get_input_details()[0]['shape']
 print("Image Shape (", width, ",", height, ")")
 
 # Load an image to be classified.
-image = Image.open(data_folder + "image.jpeg").convert('RGB').resize((width, height))
+image = Image.open(data_folder + "out162.jpg").convert('RGB').resize((width, height))
 
 # Classify the image.
 time1 = time.time()
