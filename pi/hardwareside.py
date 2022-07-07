@@ -38,7 +38,7 @@ _, height, width, _ = interpreter.get_input_details()[0]['shape']
 print("Image Shape (", width, ",", height, ")")
 
 # Load an image to be classified.
-img = Image.open(data_folder + "left.jpg").convert('RGB').resize((width, height))
+img = Image.open(data_folder + "image.jpg").convert('RGB').resize((width, height))
 """
 # Classify the image.
 time1 = time.time()
@@ -66,7 +66,7 @@ interpreter.invoke()
 # Obtain results and map them to the classes
 predictions = interpreter.get_tensor(output_details[0]['index'])[0]
 
-top_k_results = 3
+top_k_results = 4
 # Get indices of the top k results
 top_k_indices = np.argsort(predictions)[::-1][:top_k_results]
 
@@ -75,9 +75,11 @@ with open(label_path, 'r') as f:
 
 for i in range(top_k_results):
     pred=predictions[top_k_indices[i]]/255.0
-    pred=round(pred,2)
+    pred=round(pred,5)
+    #pred=int(pred * 10000)/10000
+    #'{:.4f}'.format(pred)
     lbl=labels[top_k_indices[i]]
-    print(lbl, "=", pred)
+    print(lbl, "=", pred*100, "%")
 
 print("-----------------------------------")
 

@@ -46,7 +46,7 @@ def motors(left, right):
 
 @app.route("/classify/<classnote>")
 def classify(classnote):
-    #call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
+    call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
     #call(['/home/pi/RPi-Romi-Robot/pi/hardwareside.py']) #use chmod 755 <path> for permission to file
     #call(['/home/pi/RPi-Romi-Robot/pi/image_recog.py'])
     if hardwareside.lbl_max == 'left':
@@ -77,7 +77,7 @@ def servo(setServo):
 @app.route("/pic")
 def pic():
     #call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
-    picture = "/home/pi/RPi-Romi-Robot/pi/data/image.jpeg"
+    picture = "/home/pi/RPi-Romi-Robot/pi/data/image.jpg"
     hello()
     return send_file(picture)
 

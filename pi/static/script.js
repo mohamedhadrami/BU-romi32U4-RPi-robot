@@ -44,6 +44,17 @@ function update_status(json) {
   setTimeout(poll, 100)
 }
 
+function battery_status(){
+  if (document.getElementById("battery_millivolts")<5000){
+    document.getElementById("battery_status").style.backgroundColor = red;
+  }
+  else{
+    document.getElementById("battery_status").style.backgroundColor = limegreen;
+  }
+}
+
+battery_status();
+
 function touchmove(e) {
   e.preventDefault()
   touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
