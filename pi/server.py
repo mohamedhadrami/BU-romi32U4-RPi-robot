@@ -13,7 +13,6 @@ app.debug = True
 from a_star import AStar
 a_star = AStar()
 
-import hardwareside
 import os
 import json
 
@@ -44,29 +43,25 @@ def motors(left, right):
     a_star.motors(int(left), int(right))
     return ""
 
-@app.route("/classify/<classnote>")
-def classify(classnote):
+@app.route("/classify")
+def classify():
     call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
     #call(['/home/pi/RPi-Romi-Robot/pi/hardwareside.py']) #use chmod 755 <path> for permission to file
-    #call(['/home/pi/RPi-Romi-Robot/pi/image_recog.py'])
-    if hardwareside.lbl_max == 'left':
-        a_star.motors(-100,100)
-        sleep(1000)
+    import hardwareside
+    if hardwareside.lbl_max =='left':
+        a_star.motors(0,50)
+        sleep(0.1)
         a_star.motors(0,0)
     elif hardwareside.lbl_max =='right':
-        a_star.motors(100,-100)
-        sleep(1000)
+        a_star.motors(50,0)
+        sleep(0.1)
         a_star.motors(0,0)
     elif hardwareside.lbl_max =='straight':
-        a_star.motors(100,100)
-        sleep(1000)
+        a_star.motors(50,50)
+        sleep(0.1)
         a_star.motors(0,0)
     elif hardwareside.lbl_max =='bag':
-        a_star.servo(1500)
-        sleep(1000)
-        a_star.servo(2000)
-    else:
-        a_star.play_notes(classnote)
+        a_star.motors(0,0)
     return ""
 
 @app.route("/servo/<setServo>")
@@ -120,4 +115,4 @@ def shutting_down():
     return "Shutting down in 2 seconds! You can remove power when the green LED stops flashing."
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port="5000")
+    app.run(host = "0.0.0.0", port="7000")

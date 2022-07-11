@@ -13,7 +13,7 @@ camera = PiCamera()
 camera.resolution = (1600, 1200)
 #camera.crop = (0.25, 0.25, 0.5, 0.5)
 camera.start_preview()
-sleep(5)
+sleep(0.1)
 camera.capture('/home/pi/RPi-Romi-Robot/pi/data/image.jpg')
 
 im = Image.open('/home/pi/RPi-Romi-Robot/pi/data/image.jpg').convert('RGB')

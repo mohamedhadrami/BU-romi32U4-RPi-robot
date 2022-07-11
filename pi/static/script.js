@@ -144,8 +144,7 @@ function picture(){
 }
 
 function classify(){
-  classnote = $('#notes').val()
-  $.ajax({url: "classify/"+classnote})
+  $.ajax({url: "/classify"})
 }
 
 function setLeds() {
