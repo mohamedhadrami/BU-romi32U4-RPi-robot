@@ -45,6 +45,9 @@ def motors(left, right):
 
 @app.route("/classify")
 def classify():
+    cmd = "python3 /home/pi/RPi-Romi-Robot/pi/hardwareside.py"
+    call(cmd, shell=True)
+    """
     call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
     #call(['/home/pi/RPi-Romi-Robot/pi/hardwareside.py']) #use chmod 755 <path> for permission to file
     import hardwareside
@@ -62,6 +65,7 @@ def classify():
         a_star.motors(0,0)
     elif hardwareside.lbl_max =='bag':
         a_star.motors(0,0)
+    """
     return ""
 
 @app.route("/servo/<setServo>")
@@ -115,4 +119,4 @@ def shutting_down():
     return "Shutting down in 2 seconds! You can remove power when the green LED stops flashing."
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port="7000")
+    app.run(host = "0.0.0.0", port="5000")

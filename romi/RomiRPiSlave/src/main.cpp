@@ -1,5 +1,5 @@
 #include <servo32u4.h>
-#include <Romi32U4.h>
+#include <Romi_32U4.h>
 #include <PololuRPiSlave.h>
 
 /* This example program shows how to make the Romi 32U4 Control Board 
