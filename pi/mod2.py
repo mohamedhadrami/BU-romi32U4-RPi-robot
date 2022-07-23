@@ -19,12 +19,18 @@ while True:
   #take pictures every second for 10 seconds and store to known location
   #cmd = "raspistill -t 50000 -tl 500 -o /home/pi/RPi-Romi-Robot/pi/data/raspistill/image7%02d.jpg"
   #subprocess.call(cmd, shell=True)
-
-  camera.resolution = (1600, 1200)
-  #camera.crop = (0.25, 0.25, 0.5, 0.5)
-  sleep(0.01)
-  camera.capture('/home/pi/RPi-Romi-Robot/pi/data/image.jpg')
   
+  camera = PiCamera()
+  camera.resolution = (640, 480)
+  camera.framerate = 32
+  #rawCapture = PiRGBArray(camera, size=(640, 480))
+  # allow the camera to warmup
+  sleep(0.1)
+  camera.capture_continuous(img, format="rgb", use_video_port=True)
+  #img = frame.array
+  img = cv2.resize(img, (180, 180))
+  camera.close()
+
   """
   im = Image.open('/home/pi/RPi-Romi-Robot/pi/data/image.jpg').convert('RGB')
   width, height = im.size
@@ -38,6 +44,7 @@ while True:
   camera.close()
 
   print("--- %s seconds ---" % (time.time() - start_time))
+
   def load_labels(path): # Read the labels from the text file as a Python list.
     with open(path, 'r') as f:
       return [line.strip() for i, line in enumerate(f.readlines())]
@@ -90,7 +97,8 @@ while True:
   print("Image Shape (", width, ",", height, ")")
 
   # Load an image to be classified.
-  img = Image.open(data_folder + "image.jpg").convert('RGB').resize((width, height))
+  #img = Image.open(data_folder + "image.jpg").convert('RGB').resize((width, height))
+  
   """
   # Classify the image.
   time1 = time.time()

@@ -107,7 +107,8 @@ if __name__ == "__main__":
         # initialize the camera and grab a reference to the raw camera capture
         camera = PiCamera()
         camera.resolution = (640, 480)
-        camera.framerate = 32
+        camera.framerate = 16
+        start_time = time.time()
         rawCapture = PiRGBArray(camera, size=(640, 480))
         # allow the camera to warmup
         time.sleep(0.1)
@@ -120,11 +121,13 @@ if __name__ == "__main__":
             # show the frame
             #key = cv2.waitKey(1) & 0xFF
             image = cv2.resize(image, (180, 180))
+            print("--- %s seconds ---" % (time.time() - start_time))
             #image = img_to_array(image)
             #image = np.array(image, dtype="float") / 255.0
             #image = image.reshape(-1, 28, 28, 3)
             #cv2.imshow("Frame", image[0])
             predict(image)
+            
             # clear the stream in preparation for the next frame
             rawCapture.truncate(0)
     except KeyboardInterrupt:
