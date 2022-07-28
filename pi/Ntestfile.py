@@ -14,8 +14,8 @@ d=1
 
 while True:
   start_time = time.time()
-  #subprocess.call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
-  camera = PiCamera()
+  subprocess.call(['/home/pi/RPi-Romi-Robot/pi/camera.py'])
+  """camera = PiCamera()
   #take pictures every second for 10 seconds and store to known location
   #cmd = "raspistill -t 50000 -tl 500 -o /home/pi/RPi-Romi-Robot/pi/data/raspistill/image7%02d.jpg"
   #subprocess.call(cmd, shell=True)
@@ -25,7 +25,7 @@ while True:
   sleep(0.01)
   camera.capture('/home/pi/RPi-Romi-Robot/pi/data/image.jpg')
   
-  """
+  
   im = Image.open('/home/pi/RPi-Romi-Robot/pi/data/image.jpg').convert('RGB')
   width, height = im.size
   left = width/10
@@ -35,9 +35,9 @@ while True:
   im = im.crop((left, top, right, bottom))
   im.save('/home/pi/RPi-Romi-Robot/pi/data/image.jpg')
   """
-  camera.close()
+  #camera.close()
 
-  print("--- %s seconds ---" % (time.time() - start_time))
+  #print("--- %s seconds ---" % (time.time() - start_time))
   def load_labels(path): # Read the labels from the text file as a Python list.
     with open(path, 'r') as f:
       return [line.strip() for i, line in enumerate(f.readlines())]
